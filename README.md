@@ -2,6 +2,8 @@
 
 Give presentations in the command-line. Keyboard controlled and powered with syntax highlighting.
 
+![Imgur](http://i.imgur.com/ngEUDvK.png)
+
 ## Installation
 
     $ gem install present
