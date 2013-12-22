@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require "present"
+
+if ARGV.first
+  Present::Presentation.new(ARGV.first)
+else
+  puts "No argument given. Provide a folder with your slides."
+end
+
