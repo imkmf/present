@@ -11,8 +11,9 @@ module Present
     def process
       lines = self.content.split("\n")
       if lines.size > 1
+        max = lines.map(&:size).max
         lines.each do |line|
-          Present::Line.new(line, ext).output
+          Present::Line.new(line, ext, max).output
         end
       else
         Present::Line.new(self.content, ext).output
