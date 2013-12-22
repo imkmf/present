@@ -9,14 +9,15 @@ module Present
         config = Present::Configuration.new(directory)
         files = config.sorted_directory
         files.each do |file|
-          vertical_spacer
           filename = "#{ directory }/#{ file }"
           words = File.read(filename)
           if words.empty?
             puts "Skipping #{ filename }. Blank slide."
           else
+            lines_size = words.split("\n").size
+            vertical_spacer(lines_size)
             Present::Slide.new(words, filename).process
-            vertical_spacer
+            vertical_spacer(lines_size)
             loop do
               sleep 0.1
               break if quit?
@@ -42,10 +43,12 @@ module Present
         end
       end
 
-      def vertical_spacer
-        rows = `tput lines`
-        (rows.to_i / 2).times do |r|
-          puts
+      def vertical_spacer(lines)
+        rows = `tput lines`.to_i
+        if (rows / 2) < lines
+          (lines / 2).times.map { puts }
+        else
+          (rows / 2).times.map { puts }
         end
       end
     end

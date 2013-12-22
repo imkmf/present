@@ -13,7 +13,7 @@ module Present
     def output
       lexer = Rouge::Lexer.find(ext)
       if max && lexer != Rouge::Lexers::Markdown
-        spacing = ((columns / 2) - (max.size * 1.5))
+        spacing = ((columns / 2) - (max.size * 2.5))
       else
         spacing = ((columns / 2) - (text.size / 2))
       end
